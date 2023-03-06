@@ -20,12 +20,21 @@ test.describe("If insurance > About page", () => {
     await cookieBanner.acceptCookies();
   });
 
-  test("Open Quality Assurance Specialist vacancy, and check the header", async ({ page }) => {
+  test("Open \"Quality Assurance Specialist\" vacancy, and check the header", async ({ page }) => {
     await navBar.selectSectionLV("Par If");
     await aboutIfPage.selectSectionLV("Darbs If")
     await aboutIfPage.clickOnVacanciesBtnLV()
     await aboutIfPage.selectVacancyLV("Quality Assurance Specialist")
     await aboutIfPage.assertVacancyHeader("Quality Assurance/Test Automation Specialist")
+  });
+
+
+  test("Open \"Technical Architect\" vacancy, and check the header", async ({ page }) => {
+    await navBar.selectSectionLV("Par If");
+    await aboutIfPage.selectSectionLV("Darbs If")
+    await aboutIfPage.clickOnVacanciesBtnLV()
+    await aboutIfPage.selectVacancyLV("Technical Architect")
+    await aboutIfPage.assertVacancyHeader("Technical Architect")
   });
 
 });

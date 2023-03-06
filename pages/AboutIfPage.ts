@@ -8,8 +8,7 @@ export class AboutIfPage {
   constructor(page: Page) {
     this.page = page;
     this.vacanciesBtnLv = this.page.locator('#hero a:has-text("Vakances")');
-    this.vacancyHeaderElem = this.page.locator(`h1[class="if heading large"]`)
-
+    this.vacancyHeaderElem = this.page.locator(`h1[class="if heading large"]`);
   }
 
   async open() {
@@ -49,13 +48,16 @@ export class AboutIfPage {
   ) {
     // Yes, I agree that this is not the best locator, but in my defense, the click events were getting interecepted by "Read me" element, and framework not happy
 
-    let elem = await this.page.locator(`li[class="if navigational-card lifestyle"]`, {has: this.page.locator(`span[class="if title"]:has-text("${vacancy}")`)})
-    await elem.click()
-}
-
-  async assertVacancyHeader(vacancy: string){
-    await expect(this.vacancyHeaderElem).toContainEqual(vacancy)
+    let elem = await this.page.locator(
+      `li[class="if navigational-card lifestyle"]`,
+      {
+        has: this.page.locator(`span[class="if title"]:has-text("${vacancy}")`),
+      }
+    );
+    await elem.click();
   }
 
-
+  async assertVacancyHeader(vacancy: string) {
+    await expect(this.vacancyHeaderElem).toContainText(vacancy);
+  }
 }
